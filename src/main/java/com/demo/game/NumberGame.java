@@ -10,24 +10,31 @@ import java.util.regex.Pattern;
 /**
  * NumberGame -- A simple Java console program to guess a player's secret number
  * @author Jonathan S Solomon
- *
+ * @version 1.0.0
  */
 public class NumberGame {
 	
 	private final String CMD_PROMPT = "Command";
 	private Scanner sc;
 
+	/**
+	 * The only constructor of the application and takes no parameters.
+	 * The program uses this constructor to initialize a java.util.Scanner object
+	 * that is  used to obtain the game commands typed by the player
+	 */
 	public NumberGame () {
 		//Initialize single Scanner for this Console app..
 		sc = new Scanner(System.in);
 	}
 	
-	/*
-	 * This main method is the entry into the application. It displays the game's instructions and 
+	/**
+	 * The main method is the entry into the application. It displays the game's instructions and 
 	 * the valid commands allowed by the game. 
+	 * @param args This holds an array of command-line args that is passed to the program
 	 */
 	public static void main(String[] args) {
 		
+		//Following sys-outs display a welcome screen and instructions for playing the game.
 		System.out.println("Welcome to Number-Guessing Game!");
 		System.out.println("In this game, you pick a secret number and let me guess that number with the fewest guesses.");
 		System.out.println("Assumptions made are: Your secret number must be an absolute number.");
@@ -61,10 +68,10 @@ public class NumberGame {
 		}
 	}
 	
-	/*
+	/**
 	 * This method takes no parameters and is responsible for detecting and ensuring the 
-	 * allowed command to start or end the game is type by the player at the start of the game
-	 * If the player types "ready", the game starts. If the player types "end", the ends.
+	 * allowed command to start or end the game is type by the player at the start of the game.
+	 * If the player types "ready", the game starts. If the player types "end", the gane ends.
 	 */
 	private String startGame() {
 		String cmd;
@@ -77,7 +84,7 @@ public class NumberGame {
 	    return cmd;
 	}
 	
-	/*
+	/**
 	 * The endGame method takes no parameters and ensures that the only java.util.Scanner intialized
 	 * in the Constructor is closed before the application exits
 	 */
@@ -86,8 +93,10 @@ public class NumberGame {
 		sc.close();
 	}
 	
-	/*
-	 * The guessUp method allows the game to guess a number higher than the last number the game guessed
+	/**
+	 * The guessUp method allows the game to guess a number higher than the last number the game guessed.
+	 * It does this by adding the absolute value of the difference of the last higher number
+	 * and the last lower number guessed by the game divided in half.
 	 * @param curMin This param holds the last lower number the game guessed
 	 * @param curMax This param holds the last higher number the game guessed
 	 */
@@ -106,8 +115,10 @@ public class NumberGame {
 		return cur;
 	}
 	
-	/*
+	/**
 	 * The guessDown method allows the game to guess a number lower than the last number the game guessed
+	 * It does this by subtracting the absolute value of the difference of the last higher number
+	 * and the last lower number guessed by the game divided in half.
 	 * @param curMin This param holds the last lower number the game guessed
 	 * @param curMax This param holds the last higher number the game guessed
 	 */
@@ -121,7 +132,7 @@ public class NumberGame {
 		return cur;
 	}
 	
-	/*
+	/**
 	 * The guessNumber method takes no parameters is the main engine of the number guessing game.
 	 * It uses a pattern match to ensure that the player types in an allowed game command and uses
 	 * the guessUp and guessDown method to determine which direction to guess the players number. 
@@ -166,7 +177,7 @@ public class NumberGame {
 	}
 	
 	
-	/*
+	/**
 	 * This method accepts a paramenter that it uses to determine if a command typed
 	 * by the player is allowed. It loops through the player's console input until the 
 	 * command typed by the player matches one of the allowed commands defined in the pattern.
@@ -175,7 +186,7 @@ public class NumberGame {
 	 * @return This method returns the allowed command the player typed at the console
 	 * 
 	 */
-	private String processCmd(Pattern expectedCmd) {
+	public String processCmd(Pattern expectedCmd) {
 		//This holds the command typed by the Player
         String cmd;
         
