@@ -16,6 +16,7 @@ public class NumberGame {
 	
 	private final String CMD_PROMPT = "Command";
 	private Scanner sc;
+	private String test1;
 
 	/**
 	 * The only constructor of the application and takes no parameters.
