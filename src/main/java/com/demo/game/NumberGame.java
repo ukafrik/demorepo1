@@ -19,6 +19,7 @@ public class NumberGame {
 	private String test1;
 	private String justForTest;
 	private String justForTest1;
+	private String justForTest2;
 
 	/**
 	 * The only constructor of the application and takes no parameters.
